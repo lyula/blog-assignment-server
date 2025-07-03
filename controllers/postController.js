@@ -4,6 +4,8 @@ const Post = require('../models/Post');
 // Get all posts with search and filter functionality
 const getAllPosts = async (req, res) => {
   try {
+    console.log('📝 Getting all posts with params:', req.query);
+    
     const { search, category, author, page = 1, limit = 10 } = req.query;
     
     // Build query object
@@ -27,11 +29,14 @@ const getAllPosts = async (req, res) => {
       query.author = author;
     }
     
+    console.log('🔍 Query object:', query);
+    
     // Calculate pagination
     const skip = (parseInt(page) - 1) * parseInt(limit);
     
     // Get total count for pagination
     const totalPosts = await Post.countDocuments(query);
+    console.log('📊 Total posts found:', totalPosts);
     
     // Get posts with filters and pagination
     const posts = await Post.find(query)
