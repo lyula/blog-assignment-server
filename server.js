@@ -16,7 +16,7 @@ connectDB();
 // CORS configuration for production
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, 'https://your-frontend-domain.vercel.app']
+    ? [process.env.FRONTEND_URL, 'https://blog-assignment-client.vercel.app/']
     : ['http://localhost:5173', 'http://localhost:5174'],
   credentials: true,
   optionsSuccessStatus: 200
